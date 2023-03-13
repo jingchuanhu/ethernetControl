@@ -1,37 +1,78 @@
 # EthernetSetting
 
-#### 介绍
-以太网设置jar
+**以太网设置调用API**
 
-#### 软件架构
-软件架构说明
+#### 功能说明
 
+通过EthernetManager 去设置以太网、获取以太网模式，数据等。Demo可参考ethernetcontroldemo.rar
 
-#### 安装教程
+```java
+EthernetManager mEthManager = (EthernetManager) getActivity().getSystemService(Context.ETHERNET_SERVICE);//获取系统以太网管理类
+```
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+#### 接口说明
+##### 1、获取有效的以太网接口。
+>返回值：以太网名称数组
+```java
 
-#### 使用说明
+String[] ifaces = mEthManager.getAvailableInterfaces()
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+```
+##### 2、根据以太网接口获取以太网模式
+```java
+IpAssignment mode = mEthManager.getConfiguration(mInterfaceName).getIpAssignment();
+```
 
-#### 参与贡献
+##### 3、获取静态IP时的IP信息
+```java
+StaticIpConfiguration staticIpConfiguration =mEthManager.getConfiguration(mInterfaceName).getStaticIpConfiguration();
+```
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+##### 4、获取动态Ip时的IP信息
+>参数说明：mInterfaceName 以太网名称
+```java
+String iPAddress=mEthManager.getIpAddress(mInterfaceName);//ip地址
+String netmask=mEthManager.getNetmask(mInterfaceName);//子网掩码
+String gateway=mEthManager.getGateway(mInterfaceName);//网关
+String[]dns=mEthManager.getDns(mInterfaceName);//dns
+```
+##### 5、设置以太网模式
+>参数说明：mInterfaceName 以太网名称 mIpConfiguration Ip配置信息
+```java
+//设置静态Ip
+IpConfiguration mIpConfiguration = new IpConfiguration();
+mIpConfiguration.setIpAssignment(IpAssignment.STATIC);
+mIpConfiguration.setProxySettings(IpConfiguration.ProxySettings.NONE);
+mIpConfiguration.setStaticIpConfiguration(mStaticIpConfiguration);
+mEthManager.setConfiguration(mInterfaceName, mIpConfiguration);
+//设置动态获取
+IpConfiguration ipConfiguration = new IpConfiguration();
+ipConfiguration.setIpAssignment(IpAssignment.DHCP);
+ipConfiguration.setProxySettings(IpConfiguration.ProxySettings.NONE);
+mEthManager.setConfiguration(mInterfaceName, ipConfiguration);
 
+```
+##### 6、打开/关闭以太网
+>参数说明：enable true:使能 false:关闭
 
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+```java
+mEthManager.setEnabled(enable);
+```
+##### 6、设置广播监听以太网状态
+```java
+private final static String ETHERNET_ACTION = "android.intent.action.ETHERNET_LINEKSTATE";
+...
+mIntentFilter = new IntentFilter();
+mIntentFilter.addAction(ETHERNET_ACTION);
+mIntentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+...
+String eth0state = intent.getStringExtra("eth0");
+if (!TextUtils.isEmpty(eth0state)) {
+    if ("up".equals(eth0state)) {
+        Toast.makeText(mContext, "网线已接上!", Toast.LENGTH_SHORT).show();
+    } else {
+        Toast.makeText(mContext, "网线已断开!", Toast.LENGTH_SHORT).show();
+    
+    }
+}
+```
