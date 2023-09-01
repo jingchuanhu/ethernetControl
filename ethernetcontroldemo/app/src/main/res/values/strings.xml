@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Ethernet</string>
+    <string name="ethernet_info_getting">getting IP info...</string>
+</resources>

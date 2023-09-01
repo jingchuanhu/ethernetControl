@@ -1,0 +1,340 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:nextFocusDown="@+id/auto_getip_layout"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/ethernet_enable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"
+            android:visibility="visible"
+            android:gravity="center"
+            android:nextFocusUp="@id/auto_getip_layout"
+            android:nextFocusDown="@+id/getip_layout">
+
+            <TextView
+                android:id="@+id/ethernet_enable_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:paddingLeft="80dp"
+                android:paddingTop="15dp"
+                android:text="Ethernet"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/ethernet_enable_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ethernet_enable_textview"
+                android:layout_toLeftOf="@+id/ethernet_enable_cbx"
+                android:focusable="false"
+                android:gravity="left"
+                android:paddingLeft="80dp"
+                android:paddingBottom="10dp"
+                android:textSize="14sp"
+                android:visibility="visible" />
+
+            <CheckBox
+                android:id="@+id/ethernet_enable_cbx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:visibility="visible" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/auto_getip_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:nextFocusUp="@id/auto_getip_layout"
+            android:nextFocusDown="@+id/getip_layout">
+
+            <TextView
+                android:id="@+id/auto_getip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:paddingLeft="80dp"
+                android:paddingTop="15dp"
+                android:text="DHCP"
+
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/auto_getip_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/auto_getip"
+                android:layout_toLeftOf="@+id/auto_getip_cbx"
+                android:focusable="false"
+                android:gravity="left"
+                android:paddingLeft="80dp"
+                android:paddingBottom="10dp"
+
+                android:textSize="14sp"
+                android:visibility="invisible" />
+
+            <CheckBox
+                android:id="@+id/auto_getip_cbx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:visibility="visible" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/getip_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:nextFocusRight="@id/getip_layout"
+            android:nextFocusUp="@id/auto_getip_layout">
+
+            <TextView
+                android:id="@+id/getip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:focusable="false"
+                android:paddingLeft="80dp"
+
+                android:paddingTop="15dp"
+                android:text="Static"
+
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/getip_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/getip"
+                android:layout_toLeftOf="@+id/getip_cbx"
+                android:focusable="false"
+                android:gravity="left"
+                android:paddingLeft="80dp"
+                android:paddingBottom="10dp"
+                android:textSize="14sp"
+                android:visibility="invisible" />
+
+            <CheckBox
+                android:id="@+id/getip_cbx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:visibility="visible" />
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingLeft="95dp"
+            android:paddingTop="20dp"
+            android:text="IP Address"
+
+            android:textSize="18sp" />
+
+
+        <EditText
+            android:id="@+id/ethernet_set_address_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingLeft="180dp"
+            android:paddingTop="@dimen/test_size"
+            android:paddingBottom="@dimen/test_size"
+
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="95dp"
+            android:paddingTop="20dp"
+            android:text="Gateway"
+
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/ethernet_set_gateway_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingLeft="180dp"
+            android:paddingTop="@dimen/test_size"
+            android:paddingBottom="@dimen/test_size"
+
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="95dp"
+            android:paddingTop="20dp"
+            android:text="Nestmask"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/ethernet_set_mask_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingLeft="180dp"
+            android:paddingTop="@dimen/test_size"
+            android:paddingBottom="@dimen/test_size"
+
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="95dp"
+            android:paddingTop="20dp"
+            android:text="DNS1"
+
+            android:textSize="18sp" />
+
+
+        <EditText
+            android:id="@+id/ethernet_set_dns_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingLeft="180dp"
+            android:paddingTop="@dimen/test_size"
+            android:paddingBottom="@dimen/test_size"
+
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="95dp"
+            android:paddingTop="20dp"
+            android:text="DNS2"
+
+            android:textSize="18sp" />
+
+
+        <EditText
+            android:id="@+id/ethernet_set_dns2_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingLeft="180dp"
+            android:paddingTop="@dimen/test_size"
+            android:paddingBottom="@dimen/test_size"
+
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/ethernet_set_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:gravity="center"
+            android:paddingLeft="100dp"
+            android:paddingTop="7dp"
+            android:paddingRight="100dp"
+            android:paddingBottom="7dp"
+            android:text="OK"
+            android:textSize="20sp" />
+    </LinearLayout>
+</LinearLayout>
